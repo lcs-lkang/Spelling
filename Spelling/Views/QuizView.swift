@@ -38,7 +38,11 @@ struct QuizView: View {
             HStack {
                 Spacer()
             }
-            
+            Button(action: {
+                newWord()
+            }, label: {
+                Text("New word")
+            })
             HStack {
                 Spacer()
                 Button(action: {
@@ -63,6 +67,13 @@ struct QuizView: View {
             print("Incorrect")
             currentOutcome = .incorrect
         }
+        
+    }
+    func newWord() {
+//        Reset quiz guess
+        currentItem = itemsToSpell.randomElement()!
+        userGuess = ""
+        currentOutcome = .undetermined
         
     }
 }
