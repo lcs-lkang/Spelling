@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct QuizView: View {
     
     // MARK: Stored properties
@@ -14,6 +16,9 @@ struct QuizView: View {
     
     
     @State var userGuess = ""
+    
+    
+    @State var currentOutcome: Outcome = .undetermined
     // MARK: Computed properties
     var body: some View {
         
@@ -23,9 +28,13 @@ struct QuizView: View {
                 .scaledToFit()
             
             
-            TextField("Enter name of the item",     text: $userGuess)
-                .padding()
-            
+            HStack {
+                TextField("Enter name of the item",     text: $userGuess)
+                    .padding()
+                
+                Text(currentOutcome.rawValue)
+            }
+            .padding(.horizontal)
             HStack {
                 Spacer()
             }
@@ -49,8 +58,10 @@ struct QuizView: View {
     func checkGuess() {
         if userGuess == currentItem.word {
             print("correct")
+            currentOutcome = .correct
         } else {
             print("Incorrect")
+            currentOutcome = .incorrect
         }
         
     }
