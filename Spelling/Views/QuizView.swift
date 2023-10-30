@@ -7,80 +7,103 @@
 
 import SwiftUI
 
-
-
 struct QuizView: View {
     
     // MARK: Stored properties
     @State var currentItem = itemsToSpell.randomElement()!
-    
-    
     @State var userGuess = ""
-    
-    
     @State var currentOutcome: Outcome = .undetermined
+    @State var history: [Result] = []
+    
     // MARK: Computed properties
     var body: some View {
         
-        VStack {
-            Image(currentItem.imageName)
-                .resizable()
-                .scaledToFit()
-            
-            
-            HStack {
-                TextField("Enter name of the item",     text: $userGuess)
-                    .padding()
+        HStack {
+            VStack {
+                Image(currentItem.imageName)
+                    .resizable()
+                    .scaledToFit()
                 
-                Text(currentOutcome.rawValue)
-            }
-            .padding(.horizontal)
-            HStack {
-                Spacer()
-            }
-            Button(action: {
-                newWord()
-            }, label: {
-                Text("New word")
-            })
-            HStack {
-                Spacer()
-                Button(action: {
-                    checkGuess()
-                    //                Check Guessed word
-                }, label: {
+                HStack {
+                    TextField("Enter the name of the item", text: $userGuess)
+                        .padding(.horizontal)
                     
-                    Text("Submit")
-            })
+                    Text(currentOutcome.rawValue)
+                        .padding(.horizontal)
+                }
+                
+                HStack {
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        newWord()
+                    }, label: {
+                        Text("New Word")
+                    })
+                    
+                    Button(action: {
+                        //Check guess against actual word
+                        checkGuess()
+                    }, label: {
+                        Text("Submit")
+                    }).padding()
+                    
+                }
+            }
+            
+            List(history) { currentResult in
+                HStack{
+                    Image(currentResult.item.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25)
+                    
+                    Text(currentResult.guessProvided)
+                    
+                    Spacer()
+                    
+                    Text(currentResult.outcome.rawValue)
+                }
             }
         }
         
-
     }
     
-    // MARK colon functions
+    //MARK: Functions
+    
     func checkGuess() {
-        if userGuess == currentItem.word {
-            print("correct")
+        if userGuess == currentItem.word{
+            print("Correct")
             currentOutcome = .correct
         } else {
             print("Incorrect")
             currentOutcome = .incorrect
         }
-        
     }
+    
     func newWord() {
-//        Reset quiz guess
+        
+        //Add new result to history
+        //Add to start of the list so it is always visible
+        history.insert(
+            Result(
+                item: currentItem,
+                guessProvided: userGuess,
+                outcome: currentOutcome
+            ),
+            at: 0
+        )
+        //DEBUG: What is in the history list?
+        print(history)
+        
+        //Reset the quiz page
         currentItem = itemsToSpell.randomElement()!
         userGuess = ""
         currentOutcome = .undetermined
-        
     }
 }
-
 
 #Preview {
     QuizView()
 }
-
-
