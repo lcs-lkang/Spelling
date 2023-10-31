@@ -13,6 +13,7 @@
 		812E8CE42AEFBD150067B997 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812E8CE32AEFBD150067B997 /* QuizView.swift */; };
 		812E8CE82AEFBD410067B997 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812E8CE72AEFBD410067B997 /* Item.swift */; };
 		ACF2A2C22AEFE2E70013EFE4 /* Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF2A2C12AEFE2E70013EFE4 /* Outcome.swift */; };
+		ACF2A2C62AEFED210013EFE4 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF2A2C52AEFED210013EFE4 /* functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		812E8CE32AEFBD150067B997 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		812E8CE72AEFBD410067B997 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		ACF2A2C12AEFE2E70013EFE4 /* Outcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outcome.swift; sourceTree = "<group>"; };
+		ACF2A2C52AEFED210013EFE4 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				812E8CD42AEFBCF30067B997 /* SpellingApp.swift */,
+				ACF2A2C72AF153280013EFE4 /* Helpers */,
 				812E8CE52AEFBD210067B997 /* Model */,
 				812E8CE62AEFBD280067B997 /* Views */,
 				812E8CD82AEFBCF30067B997 /* Assets.xcassets */,
@@ -89,6 +92,14 @@
 				812E8CE32AEFBD150067B997 /* QuizView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ACF2A2C72AF153280013EFE4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ACF2A2C52AEFED210013EFE4 /* functions.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 				812E8CD52AEFBCF30067B997 /* SpellingApp.swift in Sources */,
 				812E8CE82AEFBD410067B997 /* Item.swift in Sources */,
 				812E8CE42AEFBD150067B997 /* QuizView.swift in Sources */,
+				ACF2A2C62AEFED210013EFE4 /* functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
